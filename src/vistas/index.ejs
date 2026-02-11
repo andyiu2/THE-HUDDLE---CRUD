@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+</head>
+<body>
+  <h1>Servidor con EJS funcionando</h1>
+  <ul>
+    <% topics.forEach( (topic) => { %> 
+    <li><%= topic.id %> - <%= topic.name %></li>
+   
+    <% }) %>
+  </ul>
+  <input type="text" id="topic_input" placeholder="pone tu tema"/>
+  <button type="submit" onclick="agregar()">Agregar</button>
+
+  <script src="js/client.js"></script>
+</body>
+</html>

@@ -1,4 +1,12 @@
 {
+  "name": "the-huddle-crud",
+  "version": "1.0.0",
+  "description": "Proyecto CRUD con sistema de votaciones usando Express y MVC",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
   "dependencies": {
     "ejs": "^4.0.1",
     "express": "^5.2.1"
