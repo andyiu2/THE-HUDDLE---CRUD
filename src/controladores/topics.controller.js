@@ -1,24 +1,48 @@
-const {getAll, create} = require('../modelos/topics.model')
+const temaModel = require('../modelos/topics.model')
 
-const home = (req, res) => {
-    const topics = getAll()
-    console.log(topics)
-    res.render('index', {topics : topics})
+async function mostrarTemas(req, res) {
+    const temas = temaModel.obtenerTodos()
+    res.render('index', { temas })
 }
 
-const agregar = (req, res) => {
-    console.log(req.body)
-    const {topic} = req.body
-    
-  
-    console.log(`TOPIC CONTROLLER: ${topic}`); // Verifica que no imprima [object Object]
-    
-    const add = create(topic)
-    res.status(201).json(add)
-    
+function mostrarFormularioCrear(req, res) {
+    res.render('crear')
+}
+
+function crearTema(req, res) {
+    const { titulo, enlace } = req.body
+    temaModel.crear(titulo, enlace)
+    res.redirect('/')
+}
+
+function mostrarFormularioEditar(req, res) {
+    const tema = temaModel.obtenerPorId(req.params.id)
+    res.render('editar', { tema })
+}
+
+function actualizarTema(req, res) {
+    const { titulo, enlace } = req.body
+    temaModel.actualizar(req.params.id, titulo, enlace)
+    res.json({ success: true })
+
+}
+
+function eliminarTema(req, res) {
+    temaModel.eliminar(req.params.id)
+    res.json({ ok: true })
+}
+
+function votarTema(req, res) {
+    const temaActualizado = temaModel.votar(req.params.id)
+    res.json({ votos: temaActualizado.votos })
 }
 
 module.exports = {
-    home,
-    agregar
+    mostrarTemas,
+    mostrarFormularioCrear,
+    crearTema,
+    mostrarFormularioEditar,
+    actualizarTema,
+    eliminarTema,
+    votarTema
 }

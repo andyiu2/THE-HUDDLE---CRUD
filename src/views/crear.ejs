@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Tema</title>
+</head>
+<body>
+
+    <h1>Crear nuevo tema</h1>
+
+    <form action="/crear" method="POST">
+        <div>
+            <label>Título:</label>
+            <input type="text" name="titulo" required>
+        </div>
+
+        <div>
+            <label>Enlace:</label>
+            <input type="text" name="enlace" required>
+        </div>
+
+        <button type="submit">Guardar</button>
+    </form>
+
+    <br>
+    <a href="/">Volver</a>
+
+    <script src="/js/client.js"></script>
+
+</body>
+</html>

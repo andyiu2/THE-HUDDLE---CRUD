@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Temas</title>
+</head>
+<body>
+
+    <h1>Temas</h1>
+
+    <a href="/crear">Crear nuevo tema</a>
+
+    <hr>
+
+    <% if (temas.length === 0) { %>
+        <p>No hay temas todavía</p>
+    <% } %>
+
+    <% temas.forEach(tema => { %>
+        <div class="tema-card" id="tema-<%= tema.id %>">
+
+            <div class="modo-vista">
+                <h3 class="titulo"><%= tema.titulo %></h3>
+                <a class="enlace" href="<%= tema.enlace %>" target="_blank">
+                    <%= tema.enlace %>
+                </a>
+            </div>
+
+            <div class="modo-edicion" style="display:none;">
+                <input type="text" class="input-titulo" value="<%= tema.titulo %>">
+                <input type="text" class="input-enlace" value="<%= tema.enlace %>">
+                <button class="guardar-edicion" data-id="<%= tema.id %>">Guardar</button>
+            </div>
+
+            <p>
+                Votos:
+                <span id="votos-<%= tema.id %>"><%= tema.votos %></span>
+            </p>
+
+            <button class="btn-votar" data-id="<%= tema.id %>">Votar</button>
+            <button class="btn-editar" data-id="<%= tema.id %>">Editar</button>
+            <button class="btn-eliminar" data-id="<%= tema.id %>">Eliminar</button>
+
+        </div>
+
+        <hr>
+    <% }) %>
+
+        <script src="/js/client.js"></script>
+
+</body>
+</html>

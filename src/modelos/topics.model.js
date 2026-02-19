@@ -1,24 +1,49 @@
-const topics = [
-    {id : 1, name : "Andy"},
-    {id : 2, name : "JS"},
-    {id : 3, name : "Node"}
-]
+let temas = []
+let idActual = 1
 
-const getAll = () => topics
+function obtenerTodos() {
+    return temas.sort((a, b) => b.votos - a.votos)
+}
 
-const create = (topic) => {
-    const newTopic = {
-        id: 50,
-        name: topic
+function obtenerPorId(id) {
+    return temas.find(t => t.id == id)
+}
+
+function crear(titulo, enlace) {
+    const nuevo = {
+        id: idActual++,
+        titulo,
+        enlace,
+        votos: 0
     }
+    temas.push(nuevo)
+    return nuevo
+}
 
-    topics.push(newTopic)
+function actualizar(id, titulo, enlace) {
+    const tema = obtenerPorId(id)
+    if (!tema) return null
+    tema.titulo = titulo
+    tema.enlace = enlace
+    return tema
+}
 
-    console.log("Desde el modelo:", topics); 
-    return topics
+function eliminar(id) {
+    temas = temas.filter(t => t.id != id)
+}
+
+function votar(id) {
+    const tema = obtenerPorId(id)
+    if (!tema) return null
+    tema.votos++
+    return tema
 }
 
 module.exports = {
-    getAll, 
-    create
+    obtenerTodos,
+    obtenerPorId,
+    crear,
+    actualizar,
+    eliminar,
+    votar
 }
