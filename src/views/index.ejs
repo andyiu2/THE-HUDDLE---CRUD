@@ -2,51 +2,84 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Temas</title>
+    <title>Temas</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+<div class="container">
 
-    <h1>Temas</h1>
-
-    <a href="/crear">Crear nuevo tema</a>
-
-    <hr>
+    <div class="header">
+        <h1>Temas de aprendizaje</h1>
+        <a href="/crear" class="btn btn-blue">+ Nuevo tema</a>
+    </div>
 
     <% if (temas.length === 0) { %>
-        <p>No hay temas todavía</p>
+    <div class="empty-state">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="18" width="60" height="44" rx="6" fill="#e8eeff" stroke="#c0caff" stroke-width="2"/>
+            <rect x="18" y="28" width="28" height="4" rx="2" fill="#a0aaee"/>
+            <rect x="18" y="36" width="20" height="4" rx="2" fill="#c0caff"/>
+            <rect x="18" y="44" width="24" height="4" rx="2" fill="#c0caff"/>
+            <circle cx="58" cy="54" r="13" fill="#4a6cf7"/>
+            <rect x="54" y="48" width="8" height="2.5" rx="1.25" fill="white"/>
+            <rect x="54" y="53" width="8" height="2.5" rx="1.25" fill="white"/>
+            <rect x="54" y="58" width="8" height="2.5" rx="1.25" fill="white"/>
+        </svg>
+        <h2>Aún no hay temas</h2>
+        <p>Crea tu primer tema de aprendizaje y empieza a agregar recursos.</p>
+        <a href="/crear" class="btn btn-blue">+ Crear primer tema</a>
+    </div>
     <% } %>
 
-    <% temas.forEach(tema => { %>
-        <div class="tema-card" id="tema-<%= tema.id %>">
+    <% temas.forEach((tema, index) => { %>
+    <div class="card" id="tema-<%= tema.id %>">
 
-            <div class="modo-vista">
-                <h3 class="titulo"><%= tema.titulo %></h3>
-                <a class="enlace" href="<%= tema.enlace %>" target="_blank">
-                    <%= tema.enlace %>
-                </a>
+        <!-- MODO VISTA -->
+        <div class="modo-vista">
+            <div class="card-header">
+                <div class="info">
+                    <h3><%= tema.titulo %></h3>
+                    <span class="votos">▲ <span id="votos-tema-<%= tema.id %>"><%= tema.votos %></span></span>
+                </div>
+                <div class="acciones">
+                    <button class="btn-green btn-votar-tema" data-id="<%= tema.id %>">▲ Votar</button>
+                    <button class="btn-orange btn-editar" data-id="<%= tema.id %>">Editar</button>
+                    <button class="btn-red btn-eliminar" data-id="<%= tema.id %>">Eliminar</button>
+                </div>
             </div>
-
-            <div class="modo-edicion" style="display:none;">
-                <input type="text" class="input-titulo" value="<%= tema.titulo %>">
-                <input type="text" class="input-enlace" value="<%= tema.enlace %>">
-                <button class="guardar-edicion" data-id="<%= tema.id %>">Guardar</button>
-            </div>
-
-            <p>
-                Votos:
-                <span id="votos-<%= tema.id %>"><%= tema.votos %></span>
-            </p>
-
-            <button class="btn-votar" data-id="<%= tema.id %>">Votar</button>
-            <button class="btn-editar" data-id="<%= tema.id %>">Editar</button>
-            <button class="btn-eliminar" data-id="<%= tema.id %>">Eliminar</button>
-
         </div>
 
-        <hr>
+        <!-- MODO EDICIÓN -->
+        <div class="modo-edicion" style="display:none">
+            <input type="text" class="input-titulo" value="<%= tema.titulo %>">
+            <button class="btn-blue guardar-edicion" data-id="<%= tema.id %>">Guardar</button>
+            <button class="btn-gray cancelar-edicion" data-id="<%= tema.id %>">Cancelar</button>
+        </div>
+
+        <!-- ENLACES -->
+        <% if (tema.enlaces && tema.enlaces.length > 0) { %>
+            <% tema.enlaces.forEach(enlace => { %>
+            <div class="enlace-item" id="enlace-<%= enlace.id %>">
+                <a href="<%= enlace.url %>" target="_blank"><%= enlace.url %></a>
+                <span class="enlace-votos">▲ <span id="votos-<%= enlace.id %>"><%= enlace.votos_enlace %></span></span>
+                <button class="btn-green btn-votar-enlace" data-id="<%= enlace.id %>">▲</button>
+                <button class="btn-red btn-eliminar-enlace" data-id="<%= enlace.id %>">✕</button>
+            </div>
+            <% }) %>
+        <% } else { %>
+            <p class="no-enlaces">Sin enlaces todavía.</p>
+        <% } %>
+
+        <!-- FORM AGREGAR ENLACE -->
+        <form class="form-enlace" data-id="<%= tema.id %>">
+            <input type="text" name="url" placeholder="https://..." required>
+            <button type="submit" class="btn-blue">Agregar</button>
+        </form>
+
+    </div>
     <% }) %>
 
-        <script src="/js/client.js"></script>
-
+</div>
+<script src="/js/client.js"></script>
 </body>
 </html>

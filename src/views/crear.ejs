@@ -2,30 +2,29 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Crear Tema</title>
+    <title>Nuevo tema</title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
+<div class="container">
 
-    <h1>Crear nuevo tema</h1>
+    <div class="header">
+        <h1>Nuevo tema</h1>
+        <a href="/">← Volver</a>
+    </div>
 
-    <form action="/crear" method="POST">
-        <div>
-            <label>Título:</label>
-            <input type="text" name="titulo" required>
-        </div>
+    <div class="form-crear">
+        <form action="/crear" method="POST">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" name="titulo" placeholder="ej: JavaScript Avanzado" required autofocus>
+            <div class="form-footer">
+                <a href="/" class="btn btn-gray">Cancelar</a>
+                <button type="submit" class="btn btn-blue">Crear tema</button>
+            </div>
+        </form>
+    </div>
 
-        <div>
-            <label>Enlace:</label>
-            <input type="text" name="enlace" required>
-        </div>
-
-        <button type="submit">Guardar</button>
-    </form>
-
-    <br>
-    <a href="/">Volver</a>
-
-    <script src="/js/client.js"></script>
-
+</div>
+<script src="/js/client.js"></script>
 </body>
 </html>
