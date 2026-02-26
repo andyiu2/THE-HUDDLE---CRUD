@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f5f5;
+    color: #222;
+    padding: 30px 20px;
+}
+
+h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+a {
+    color: #4a6cf7;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 10px 0;
+}
+
+/* ---- LAYOUT ---- */
+.container {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+/* ---- BOTONES ---- */
+button, .btn {
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    padding: 5px 12px;
+    transition: opacity 0.15s;
+}
+
+button:hover, .btn:hover {
+    opacity: 0.8;
+}
+
+.btn-blue   { background: #4a6cf7; color: #fff; }
+.btn-green  { background: #2ea043; color: #fff; }
+.btn-red    { background: #e74c3c; color: #fff; }
+.btn-orange { background: #e67e22; color: #fff; }
+.btn-gray   { background: #e0e0e0; color: #333; }
+
+/* ---- CARD ---- */
+.card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.card-header .info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.votos {
+    font-size: 13px;
+    color: #555;
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+.acciones {
+    display: flex;
+    gap: 6px;
+}
+
+/* ---- ENLACES ---- */
+.enlace-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    flex-wrap: wrap;
+}
+
+.enlace-item a {
+    flex: 1;
+    font-size: 13px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.enlace-votos {
+    font-size: 12px;
+    color: #666;
+}
+
+.no-enlaces {
+    font-size: 13px;
+    color: #999;
+    padding: 4px 0;
+}
+
+/* ---- FORM ENLACE ---- */
+.form-enlace {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.form-enlace input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+}
+
+.form-enlace input:focus {
+    border-color: #4a6cf7;
+}
+
+/* ---- MODO EDICION ---- */
+.modo-edicion {
+    display: none;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.modo-edicion input {
+    flex: 1;
+    min-width: 180px;
+    padding: 6px 10px;
+    border: 1px solid #4a6cf7;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+}
+
+/* ---- EMPTY STATE ---- */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.empty-state svg {
+    margin-bottom: 16px;
+}
+
+.empty-state h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.empty-state p {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+/* ---- FORM CREAR ---- */
+.form-crear {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 440px;
+}
+
+.form-crear label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+.form-crear input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 16px;
+    outline: none;
+}
+
+.form-crear input:focus {
+    border-color: #4a6cf7;
+}
+
+.form-crear .form-footer {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo tema</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="header">
+        <h1>Nuevo tema</h1>
+        <a href="/">← Volver</a>
+    </div>
+
+    <div class="form-crear">
+        <form action="/crear" method="POST">
+            <label for="titulo">Título</label>
+            <input type="text" id="titulo" name="titulo" placeholder="ej: JavaScript Avanzado" required autofocus>
+            <div class="form-footer">
+                <a href="/" class="btn btn-gray">Cancelar</a>
+                <button type="submit" class="btn btn-blue">Crear tema</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+<script src="/js/client.js"></script>
+</body>
+</html>
